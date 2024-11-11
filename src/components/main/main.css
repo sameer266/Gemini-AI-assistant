@@ -1,0 +1,201 @@
+/* Main Container */
+.main {
+    flex: 1;
+    min-height: 100vh;
+    padding-bottom: 15vh;
+    position: relative;
+    background-color: #fff; /* Background for better contrast */
+}
+
+/* Navigation Bar */
+.main .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 22px;
+    padding: 20px;
+    color: #585558;
+}
+
+.main .nav img {
+    width: 40px;
+    border-radius: 50%; /* Proper circular border */
+}
+
+/* Main Content Container */
+.main-container {
+    max-width: 900px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+/* Greeting Section */
+.main .greet {
+    margin: 50px 0;
+    font-size: 56px;
+    color: #c4c7c4;
+    font-weight: 500;
+    padding: 20px;
+}
+
+.main .greet span {
+    background: linear-gradient(16deg, #4b90ff, #ff5546);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Cards Layout */
+.main .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 15px;
+    padding: 20px;
+}
+
+/* Card Styles */
+.main .card {
+    height: 200px;
+    padding: 15px;
+    background-color: #f0f4f9;
+    position: relative;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+}
+
+.main .card:hover {
+    background-color: #dfe4ea;
+    transform: scale(1.05); /* Slight scaling effect */
+}
+
+.main .card img {
+    width: 35px;
+    padding: 5px;
+    position: absolute;
+    background-color: white;
+    border-radius: 50%; /* Proper circular border */
+    bottom: 10px;
+    right: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Add shadow for visual depth */
+}
+
+.main .card p {
+    color: #585558;
+    font-size: 16px;
+}
+
+/* Bottom Search Box */
+.main-bottom {
+    position: absolute;
+    bottom: 0;
+    width: 80%;
+    padding: 0 20px;
+    margin: auto;
+}
+
+/* Search Box Styles */
+.search-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 10px;
+    background: #f0f4f9;
+    padding: 10px 20px;
+    border-radius: 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: box-shadow 0.3s ease;
+    margin-bottom: 15px;
+}
+
+.search-box:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+}
+
+.search-box img {
+    width: 24px;
+    cursor: pointer;
+}
+
+.search-box input {
+    flex: 1;
+    background: transparent;
+    outline: none;
+    border: none;
+
+    padding: 8px;
+    font-size: 18px;
+    color: #333;
+}
+
+.search-box input:focus {
+    border-bottom: 2px solid #4b90ff; /* Visual focus indicator */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main .greet {
+        font-size: 36px;
+        text-align: center;
+    }
+
+    .main .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .main-bottom {
+        padding: 0 10px;
+    }
+}
+
+
+/* Container for the entire Q&A list */
+.qa-list {
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Styling for each individual Q&A item */
+  .qa-item {
+
+    padding: 15px;
+    margin-bottom: 40px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  /* Hover effect on each question item */
+  .qa-item:hover {
+    background-color: #f1f1f1;
+    transform: scale(1.02);
+  }
+  
+  /* Styling for the question part */
+  .qa-item p:first-child {
+    font-size: 18px;
+    font-weight: bold;
+   
+    margin-bottom: 10px;
+  }
+  
+  /* Styling for the answer part */
+  .qa-item p:last-child {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5;
+    margin-top: 10px;
+  }
+  
+  /* Optional: Add a line between the question and answer */
+  .qa-item p:first-child::after {
+    content: '';
+    display: block;
+    margin-top: 10px;
+    border-bottom: 1px solid #eee;
+  }
+  
