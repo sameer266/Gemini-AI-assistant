@@ -1,25 +1,28 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import '../main/main.css';
 import { assets } from '../../assets/assets';
 import { PostData } from '../../apiData/ApiData.js';
+import { MyContext } from '../../apiData/ContextData.js';
 
 function Main() {
-  const [question, setQuestion] = useState('');
+  const { addQuestion } = useContext(MyContext);  // Use addQuestion to add a new question
   const [qaList, setQaList] = useState([]);  // Array to hold questions and answers
-  const [loading, setLoading] = useState(false);  // Loading state
+  const [loading, setLoading] = useState(false);
+  const [question, setQuestion] = useState("");  // Local state for question input
 
   const handleOnSubmit = async () => {
     try {
-      setLoading(true); // Set loading state to true before making API call
+      setLoading(true);  // Set loading state to true before making API call
       console.log("API Key:", process.env.REACT_APP_GEMINI_API_KEY);
 
       const objData = await PostData(question);  // Sends the question to the API
       if (objData && objData.candidates) {
-        // Access the first candidate's content
         const answer = objData.candidates[0].content.parts[0].text;
 
-        // Add new question and answer to the list
         setQaList((prevList) => [...prevList, { question, answer }]);
+
+        // Add question to context after receiving the answer
+        addQuestion(question);
 
         // Clear the input field
         setQuestion('');
@@ -29,7 +32,7 @@ function Main() {
     } catch (error) {
       console.error("Error fetching data:", error);
     } finally {
-      setLoading(false);  // Set loading state to false after data is received or error occurs
+      setLoading(false);
     }
   };
 

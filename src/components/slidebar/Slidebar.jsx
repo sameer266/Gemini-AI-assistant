@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { assets } from '../../assets/assets';
 import '../slidebar/slidebar.css';
+import { MyContext } from '../../apiData/ContextData';
 
 function Slidebar() {
-  const [extended, setExtended] = useState(false);
+  const { questions } = useContext(MyContext);
+  const [extended, setExtended] = useState(true);
 
   return (
     <div className='slidebar'>
@@ -20,7 +22,12 @@ function Slidebar() {
             <p className='recent-title'>Recent</p>
             <div className='recent-entry'>
               <img src={assets.message_icon} alt="message" />
-              <p> What is r.</p>
+              {/* Display the most recent question */}
+              {questions.length > 0 ? (
+                <p>{questions[questions.length - 1]}</p>  // Last question in the array
+              ) : (
+                <p>No recent questions</p>
+              )}
             </div>
           </div>
         )}
